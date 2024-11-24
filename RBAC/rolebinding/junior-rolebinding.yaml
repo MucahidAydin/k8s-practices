@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: junior-production-role-binding
+  namespace: production
+subjects:
+- kind: User
+  name: mucahid@k8s
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: junior-production-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: junior-test-role-binding
+  namespace: test
+subjects:
+- kind: User
+  name: mucahid@k8s
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: junior-test-role
+  apiGroup: rbac.authorization.k8s.io

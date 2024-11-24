@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-test
+  namespace: test
+spec:
+  selector:
+    matchLabels:
+      app: ds-test
+  template:
+    metadata:
+      labels:
+        app: ds-test
+    spec:
+      containers:
+      - name: ds-container
+        image: fluentd:latest
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 80
